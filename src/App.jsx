@@ -10,14 +10,6 @@ import { toggleDarkMode } from "./utils/toggleMode";
 import { loadInitialStates } from "./utils/loadInitialStates";
 import { toggleLanguage } from "./utils/toggleLang";
 
-// :root {
-//   --primary-text: hsl(200, 15%, 8%);
-//   --background-light: hsl(0, 0%, 98%);
-//   --background-dark: hsl(207, 26%, 17%);
-//   --dark-elements: hsl(209, 23%, 22%);
-//   --light-input: hsl(0, 0%, 52%);
-//   --light-elements: #ffffff;
-// }
 const queryClient = new QueryClient();
 function App() {
   const { Header } = Layout;
@@ -51,10 +43,11 @@ function App() {
               >
                 <h2 className="text-lg font-[700] ms-6">{t("TITLE")}</h2>
                 <div className="flex gap-3 me-10 text-md">
-                  <Button onClick={() => toggleLanguage(setDir)}>
+                  <Button onClick={() => setDir(toggleLanguage())}>
                     {i18n.language === "ar" ? t("English") : t("العربية")}
                   </Button>
-                  <Button onClick={() => toggleDarkMode(isDark, setIsDark)}>
+
+                  <Button onClick={() => setIsDark(toggleDarkMode(isDark))}>
                     {isDark ? t("LIGHT") : t("DARK")}
                   </Button>
                 </div>
