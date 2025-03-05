@@ -1,13 +1,15 @@
 import i18n from "../i18n";
 
-export const loadInitialStates = (setDir) => {
-  const mode = localStorage.getItem("mode");
-  const lang = localStorage.getItem("lang");
-  if (mode === "dark") {
+export const loadInitialStates = () => {
+  const mode = localStorage.getItem("mode") === "dark";
+  const lang = localStorage.getItem("lang") || "en";
+  const direction = lang === "ar" ? "rtl" : "ltr";
+
+  if (mode) {
     document.documentElement.classList.add("dark");
   }
-  if (lang === "ar") {
-    i18n.changeLanguage("ar");
-    setDir("rtl");
-  }
+
+  i18n.changeLanguage(lang);
+
+  return { mode, direction };
 };

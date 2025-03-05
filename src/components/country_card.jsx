@@ -16,19 +16,19 @@ const CountryCard = ({ country }) => {
       />
       <p className="mt-4">
         <span>
-          <strong>{t("POPULATION")}</strong>
+          <strong>{t("POPULATION")} :</strong>
         </span>
         <span> {country.population}</span>
       </p>
       <p className="mt-1">
         <span>
-          <strong>{t("REGION")}</strong>
+          <strong>{t("REGION")} : </strong>
         </span>
         <span>{country.region}</span>
       </p>
       <p className="mt-1">
         <span>
-          <strong>{t("CAPITAL")}</strong>
+          <strong>{t("CAPITAL")} : </strong>
         </span>
         <span>{country.capital}</span>
       </p>

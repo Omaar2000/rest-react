@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Button, ConfigProvider, Layout, theme } from "antd";
 import Home from "./pages/home";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DetailPage from "./pages/detail-page";
 import i18n from "./i18n";
 import { useTranslation } from "react-i18next";
@@ -13,13 +13,10 @@ import { toggleLanguage } from "./utils/toggleLang";
 const queryClient = new QueryClient();
 function App() {
   const { Header } = Layout;
-  const [isDark, setIsDark] = useState(localStorage.getItem("mode") === "dark");
-  const [dir, setDir] = useState("ltr");
+  const { mode, direction } = loadInitialStates();
+  const [isDark, setIsDark] = useState(mode);
+  const [dir, setDir] = useState(direction);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    loadInitialStates(setDir);
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
